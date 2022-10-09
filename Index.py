@@ -170,14 +170,20 @@ def Login():
             # Gets the data from server and stores in UserInfo dict (Username:Passwd)
             cr.execute("SELECT USERNAME,PASSWD,EMAIL FROM FLASK;")
             UserInfo = {i[0]: [Decrypt(i[2]),Decrypt(i[1])] for i in cr.fetchall()}
-            for i,j in UserInfo.items():
-                print(f"UserName : {i}")
-                print(f"Email : {j[0]}")
-                print(f"Passwd : {j[1]}")
+
+
+            # for i,j in UserInfo.items():
+            #     print(f"UserName : {i}")
+            #     print(f"Email : {j[0]}")
+            #     print(f"Passwd : {j[1]}")
+            
+            
             # UserName taken from the FORM
             UserName = request.form["Usr"]
+            
             # Passwd taken from the FORM
             Passwd = request.form['Passwd']
+            
             # If Credentials in the database does not match the User Input
             # Raises an Exception
             if UserInfo[UserName][1] != Passwd:
@@ -267,7 +273,7 @@ def Signup():
 
             # List of all emails on the server 
             l = [Decrypt(j) for i in cr.fetchall() for j in i]
-            print(l)
+            # print(l)
 
             # IF email is in Database Throws and error
             if (Email in l) is True:
@@ -285,7 +291,7 @@ def Signup():
                 
                 # List of all emails on the server
                 l = [Decrypt(j) for i in cr.fetchall() for j in i]
-                print(l)
+                # print(l)
 
                 SingupDisplay="!!! Successfully Signed Up !!!"
                 SingupDisplay1="You Can Login Now"
