@@ -1,0 +1,62 @@
+//
+@use "Var";
+.Loader-Wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: Var.$primary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  & .Loading-Text {
+    margin-top: 5rem;
+    color: Var.$primary-color-light;
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    padding-left: 3rem;
+  }
+}
+body.dark .Loader-Wrapper{
+    background-color: Var.$Darkprimary-color;
+}
+.lds-ring {
+  margin-top: 20rem;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,58 @@
+{% extends "Base.html" %}
+
+<!-- Head -->
+{% block head %}
+
+<title>Recover Username Password</title>
+<link rel="stylesheet" href="{{url_for('static', filename='CSS/Login.css')}}" />
+{% endblock %}
+
+<!-- Body Content -->
+
+{% block Content %}
+<section class="home FormCont">
+  <div class="text">Recover Your UserName and Password</div>
+    <div id="Caution" class="text SecText" >
+    Enter the Email Associated with your ACCOUNT <br>
+    You will get your UserName and Password linked with your Email
+  </div>
+  <div class="formbars">
+    <form action="{{url_for('Forgot')}}" method="post">
+      <div class="text" style="text-decoration: underline; font-weight: 700">
+        Recovery Form
+      </div>
+      <div
+        class="text"
+        {{Style | safe}}
+      >
+        {{Msg1}} <br />{{Msg2}}
+      </div>
+      
+      <span>
+        <label class="SecText" for="Passwd"><b>Email : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="email"
+          name="Email"
+          id="Email"
+          placeholder="Enter Your Email..."
+        />
+      </span>
+
+      <button class="Padinputs SecText" type="submit">Submit</button>
+            <div class="Signup-forgot">
+        <a href="{{url_for('ChangeCredentials')}}" class="SecText">
+          <span>Change Credentials</span>
+        </a>
+        <a href="{{url_for('Login')}}" class="SecText">
+          <span>Back to Login</span>
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+<!-- Scripts -->
+{% block Script %} {% endblock %}

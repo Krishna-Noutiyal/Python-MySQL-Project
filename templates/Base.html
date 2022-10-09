@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!----======== CSS ======== -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='CSS/Nav.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='CSS/Loader.css')}}"
+    />
+
+    <!----======== FAV Icon ======== -->
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static', filename='Images/Logo.jpg')}}"
+      type="image/x-icon"
+      style="border-radius: 50px"
+    />
+
+    <!----===== Boxicons CSS ===== -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    {% block head %} {% endblock %}
+  </head>
+  <body style="overflow: hidden;">
+    <!-- Navigation -->
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img
+              src="{{url_for('static', filename='Images/Logo.jpg')}}"
+              alt=""
+            />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">Krishna</span>
+            <span class="profession">&ensp;Noutiyal</span>
+          </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle" onclick="SideBar()"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="{{url_for('Index')}}">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Home</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="{{url_for('About')}}">
+                <i class="bx bx-bar-chart-alt-2 icon"></i>
+                <span class="text nav-text">About</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="{{url_for('Memories')}}">
+                <i class="bx bx-heart icon"></i>
+                <span class="text nav-text">Memories</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="{{url_for('Projects')}}">
+                <i class="bx bx-pie-chart-alt icon"></i>
+                <span class="text nav-text">Projects</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="{{url_for('Gallery')}}">
+                <i class="bx bx-heart icon"></i>
+                <span class="text nav-text">Gallery</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="{{url_for('Contact')}}">
+                <i class="bx bx-bell icon"></i>
+                <span class="text nav-text">Contact</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a onclick="ConfirmLogout()" style="cursor: pointer">
+              <i class="bx bx-log-in icon" id="Lin_Lout_Icon"></i>
+              <span class="text nav-text" id="Lin_Lout">Login</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch" onclick="SendMode()">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <div class="text Loader-Wrapper" style="display: none;">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="Loading-Text"><span id="LoadText"></span></div>
+    </div>
+    {% block Content %} {% endblock %}
+  </body>
+  <!----======== JS ======== -->
+  <!-- Nav.js, Jquery AND Typed.js-->
+  <script src="{{url_for('static', filename='JS/Nav.js')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <script>
+
+    // Typing Animation on Loader
+    let typed = new Typed("#LoadText", {
+      strings: ["Hold ON !!", "Wait !!", "Loading..."],
+      typeSpeed: 100,
+      backSpeed: 100,
+      loop: false,
+    });
+    // Fading Out of the Loader
+    $(window).on("load",function(){
+      $(".Loader-Wrapper").fadeOut("slow");
+      $(body).removeAttr("style")
+    })
+    
+    // Function that returns a bool true:(User has loged in) false:(Not loged in)
+    LoginOrNot = () => {
+      let a;
+      // Sending a get request
+      $.get({
+        url: "{{url_for('LoginOrNot')}}",
+        // async is false so that output can be returned
+        async: false,
+        success: function (data, status) {
+          // Parsing the data retrived fromt he server
+          let Loged = JSON.parse(data);
+          a = Loged;
+        },
+      });
+      return a;
+    };
+
+    // Login Variable store the info of the Login state
+    // If User is Loged in True else false
+    let Loged = LoginOrNot();
+    let Sb = document.querySelector("nav").classList;
+
+    // If User has Loged in changing the Login button and its icon to Logout
+    if (Loged == true) {
+      console.log(`Inside LoginOrNOt : ${Loged}`);
+      // Login Icon in the sidebar
+      const LogIcon = document.getElementById("Lin_Lout_Icon");
+      // Login Text in the sidebar
+      const LogText = document.getElementById("Lin_Lout");
+      // Login Icon changes to Logout Icon
+      LogIcon.classList.remove("bx-log-in");
+      LogIcon.classList.add("bx-log-out");
+      // Login Text Changes to Logout Text
+      LogText.innerText = "Logout";
+    }
+
+    // Sending GET request to Server URL: SideBar
+    // Server Returns the Previous Folding state of SideBar
+    // Then if the recieved data= close it removes close class from Sidbar
+    $.get({
+      url: "{{url_for('Sidebar')}}",
+
+      // Data is getting recieved in string format
+      success: function (data, status) {
+        // console.log(`Data Recived from SideBar : ${data != "" ? data : "No Data Recived"}\nStatus : ${status}`);
+
+        // If the recieved data is not empty
+        if (data != "") {
+          // Adds the recieved data to the class of the BODY
+          Sb.remove("close");
+        }
+      },
+    });
+
+
+    // Sending the current State of Side bar to server
+    SideBar = () => {
+      console.log(Sb[1]);
+      $.ajax({
+        url: "{{url_for('Sidebar')}}",
+        type: "POST",
+        contentType: "application/json",
+        contentType: "application/json",
+        data: Sb[1] != undefined ? JSON.stringify("close") : JSON.stringify(""),
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    };
+
+    // Sending GET request to Server URL: UpdateMode
+    // Server Returns the Previous Theme of the Body
+    // If returns the Theme/class of the bady adding that class to body tag
+    $.get({
+      url: "{{url_for('UpdateMode')}}",
+      // Data is getting recieved in string format
+      success: function (data, status) {
+        // console.log(`Data Recived from UpdateMode : ${data != "" ? data : "No Data Recived"}\nStatus : ${status}`);
+
+        // If the recieved data is not empty
+        if (data != "") {
+          // Adds the recieved data to the class of the BODY
+          body.classList.add(data);
+        }
+      },
+    });
+
+    // Confirming beform loggin out
+    // Redirects to the Login page if Confirmed
+    ConfirmLogout = () => {
+      if (Loged == true) {
+        let UserInp = confirm("Do you want to Logout !!");
+        if (UserInp == true) {
+          window.location.replace("{{url_for('Login')}}");
+        }
+      } else {
+        window.location.replace("{{url_for('Login')}}");
+      }
+    };
+
+    // When the Toggle Mode button is clicked
+    SendMode = () => {
+      // List of the classes added to body
+      let BodyClass = body.classList;
+
+      // If the BODY'S class contains("dark")
+      // Sends an ajax POST request to the sever with data = "dark"
+      $.ajax({
+        url: '{{url_for("UpdateMode")}}',
+        type: "POST",
+        data: BodyClass.contains("dark")
+          ? JSON.stringify("")
+          : JSON.stringify("dark"),
+        contentType: "application/json",
+        success: function (res) {
+          console.log(res);
+        },
+        error: function (err) {
+          console.log(err);
+        },
+      });
+    };
+  </script>
+  {% block Script %}{% endblock %}
+</html>

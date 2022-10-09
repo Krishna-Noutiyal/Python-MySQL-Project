@@ -1,0 +1,96 @@
+@use "Var";
+
+body.dark {
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+}
+
+.FormCont {
+  height: 90vh;
+}
+.formbars {
+  width: 100%;
+  height: 100%;
+  // background-color: Var.$primary-color;
+  & form {
+    width: 30%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 5rem;
+    flex-direction: column;
+    & span {
+      // align-self: ;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    & button {
+      align-self: flex-end;
+      margin-right: 2rem;
+      color: Var.$text-color;
+      cursor: pointer;
+      &:hover {
+        color: Var.$Darkbody-color;
+      }
+    }
+  }
+}
+
+.Padinputs {
+  padding: 12px 20px;
+  border: 3px solid Var.$primary-color;
+  border-radius: 12px;
+  font-size: 24px;
+  background-color: Var.$toggle-color;
+  outline: none;
+  transition: Var.$tran-03;
+}
+body.dark .Padinputs {
+  border: 3px solid Var.$Darksubtext-color;
+  color: Var.$Darktext-color;
+  background-color: Var.$Darksidebar-color;
+}
+body.dark .formbars button {
+  color: Var.$Darktext-color;
+  &:hover {
+    color: Var.$Darksubtext-color;
+    border-color: Var.$Darktext-color;
+  }
+}
+
+.subtext{
+  color: Var.$primary-color !important;
+}
+body.dark .subtext{
+  color: Var.$Darksubtext-color !important;
+}
+
+
+// Singup and Forgot buttons 
+.Signup-forgot{
+  width: 100%;
+  word-wrap:break-word;
+  margin: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;                              
+}
+
+// Singup Page Caution before form
+
+#Caution{
+  font-weight: bold;
+  letter-spacing: 1px;
+  word-spacing: 6px;
+  color: Var.$primary-color;
+}
+
+body.dark #Caution{
+  color: Var.$Darksubtext-color;
+}

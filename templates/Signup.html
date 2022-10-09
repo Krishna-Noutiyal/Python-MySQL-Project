@@ -1,0 +1,75 @@
+{% extends "Base.html" %}
+
+<!-- Head -->
+{% block head %}
+
+<title>Signup</title>
+<link rel="stylesheet" href="{{url_for('static', filename='CSS/Login.css')}}" />
+
+{% endblock %}
+
+<!-- Body Content -->
+
+{% block Content %}
+<section class="home FormCont">
+  <div class="text">SignUp for an Account !!</div>
+  <div id="Caution" class="text SecText">
+    Be Carefull while entering the Username and Email <br />
+    UserName and Email can't be changed later ON !!
+  </div>
+  <div class="formbars">
+    <form action="{{url_for('Signup')}}" method="post">
+      <div class="text" style="text-decoration: underline; font-weight: 700">
+        SignUp Form
+      </div>
+      <div class="text" {{Style | safe}}>
+        {{Msg1}}
+        <br />
+        {{Msg2}}
+      </div>
+      <span>
+        <label class="SecText" for="Usr"><b>UserName : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="text"
+          name="Usr"
+          id="Usr"
+          placeholder="Username"
+        />
+      </span>
+
+      <span>
+        <label class="SecText" for="Usr"><b>Email : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="email"
+          name="Email"
+          id="Email"
+          placeholder="Enter your Email..."
+        />
+      </span>
+
+      <span>
+        <label class="SecText" for="Passwd"><b>Password : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="password"
+          name="Passwd"
+          id="Passwd"
+          placeholder="Password"
+        />
+      </span>
+      <button class="Padinputs SecText" type="submit">Submit</button>
+      <div class="Signup-forgot">
+        <a href="{{url_for('Login')}}" class="SecText">
+          <span>Back to Login</span>
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+<!-- Scripts -->
+{% block Script %} {% endblock %}

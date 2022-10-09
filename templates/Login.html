@@ -1,0 +1,63 @@
+{% extends "Base.html" %}
+
+<!-- Head -->
+{% block head %}
+
+<title>Login</title>
+<link rel="stylesheet" href="{{url_for('static', filename='CSS/Login.css')}}" />
+{% endblock %}
+
+<!-- Body Content -->
+
+{% block Content %}
+<section class="home FormCont">
+  <div class="text">Login to your Account</div>
+  <div class="formbars">
+    <form action="{{url_for('Login')}}" method="post">
+      <div class="text" style="text-decoration: underline; font-weight: 700">
+        Login Form
+      </div>
+      <div
+        class="text"
+        {{Style | safe}}
+      >
+        {{Msg1}} <br />{{Msg2}}
+      </div>
+
+      <span>
+        <label class="SecText" for="Usr"><b>UserName : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="text"
+          name="Usr"
+          id="Usr"
+          placeholder="Username"
+        />
+      </span>
+      <span>
+        <label class="SecText" for="Passwd"><b>Password : </b></label>
+        <input
+          class="Padinputs SecText"
+          type="password"
+          name="Passwd"
+          id="Passwd"
+          placeholder="Password"
+        />
+      </span>
+      <button class="Padinputs SecText" type="submit">Submit</button>
+      <div class="Signup-forgot">
+        <a href="{{url_for('Signup')}}" class="SecText">
+          <span>Signup</span>
+        </a>
+        <a href="{{url_for('Forgot')}}" class="SecText">
+          <span> Forgot Password ?</span>
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
+
+<!-- Scripts -->
+{% block Script %} {% endblock %}
