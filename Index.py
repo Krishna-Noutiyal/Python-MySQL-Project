@@ -1,5 +1,4 @@
 import json
-from tkinter.ttk import Style
 from flask import Flask, render_template, redirect, url_for, request
 import mysql.connector as sql
 from cryptography.fernet import Fernet
@@ -103,39 +102,39 @@ def Index():
 
 @app.route("/About")
 def About():
-    return render_template("About.html", Content="This is About Page")
+    return render_template("About.html", Content="About Us")
 
 
 """ Memories PAGE """
 
 
-@app.route("/Memories")
-def Memories():
-    return render_template("Memories.html", Content="This is Memories Page")
+@app.route("/Websites")
+def Websites():
+    return render_template("Websites.html", Content="Websites used in the Develpment of this Project !!")
 
 
 """ Projects PAGE """
 
 
-@app.route("/Projects")
-def Projects():
-    return render_template("Projects.html", Content="This is Projects Page")
+@app.route("/Softwares")
+def Softwares():
+    return render_template("Softwares.html", Content="Softwares used in the dDvelpment of this Project !!")
 
 
 """ Gallery PAGE """
 
 
-@app.route("/Gallery")
-def Gallery():
-    return render_template("Gallery.html", Content="This is Gallery Page")
+@app.route("/Modules")
+def Modules():
+    return render_template("Modules.html", Content="Modules used in the Develpment of this Project !!")
 
 
 """ Contact PAGE """
 
 
-@app.route("/Contact")
-def Contact():
-    return render_template("Contact.html", Content="This is Contact Page")
+@app.route("/Extras")
+def Extras():
+    return render_template("Extras.html", Content="Some EXTRA Stuffs")
 
 
 """ Login OR Not"""

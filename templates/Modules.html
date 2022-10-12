@@ -1,0 +1,46 @@
+{% extends "Base.html" %}
+
+
+<!-- Head -->
+{% block head %}
+
+<title>Modules Used</title>
+{% endblock %}
+
+
+<!-- Body Content -->
+
+{% block Content %}
+<section class="home">
+  <div class="text">{{Content}}</div>
+  <div class="text subtext otherdivs">
+              <pre>
+                <div class="sp">•	Json</div>
+                      Use in the interaction of JavaScript and 
+                      Python to transfer the data from client to server.
+
+                <div class="sp">•	Flask</div>
+                      Used for local deployment of server for the 
+                      website and it's template manipulation and other functionalities for easy in the development process of website.
+
+                <div class="sp">•	Mysql.connector</div>
+                      Connector module used for the interaction between 
+                      server and my SQL database
+
+                <div class="sp">•	Cryptography </div>
+                      It is used for the encryption of sensitive information 
+                      provided by the user that has to be stored in the database.
+
+                <div class="sp">•	Virtualenv</div>
+                      Used to create a Virtual Environment for a fresh development
+
+              </pre>
+  </div>
+</section>
+{% endblock %}
+
+
+<!-- Scripts -->
+{% block Script %}
+
+{% endblock %}

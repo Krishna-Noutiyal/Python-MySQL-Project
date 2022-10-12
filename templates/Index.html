@@ -4,7 +4,7 @@
 <!-- Head -->
 {% block head %}
 
-<title>Personal Website</title>
+<title>Demonstrator</title>
 {% endblock %}
 
 
@@ -12,7 +12,37 @@
 
 {% block Content %}
 <section class="home">
-  <div class="text">{{Content}}</div>
+  <div class="text" >{{Content}}</div>
+  <div class="text subtext otherdivs">
+    Hello and welcome to our Project we call it 
+    <span class="sp">!! The Demonstrator !!</span><br>
+    <pre>
+
+    This project is a practical demonstration of how user's information is secured by a website.
+    Securing user's information doesn't only include the use of strong passwords by the user or two step verification but instead
+
+
+    <span class="sp">It also includes the following things:</span>
+      <span class="highlight">
+                  • The protocol used while exchange of data from the server to website to a client
+
+                  • How the password is stored in a database
+
+                  • How the data is retrieved from the database to server
+
+                  • And finally, how the data is retrieved from the server to the client
+      </span>
+    There are obviously many more things to be considered
+    to maintain the security integrity and reliability of data
+    
+    We are living in a modern world in which data breaches occur more often than the change in ruling party in a government.
+    And in this world, internet addiction is more than the alcoholic addiction
+    <span class="highlight">
+    This means the data needs to be Garden 24/7 without any mistake
+    But the truth is humans make mistakes (vice versa) 😅 it's in human nature.
+    </span>
+</pre>
+  </div>
 </section>
 {% endblock %}
 

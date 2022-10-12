@@ -1,5 +1,6 @@
-/* Google Font Import - Poppins */
 @use "Var";
+
+/* Google Font Import - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
@@ -299,7 +300,37 @@ body.dark .switch::before{
     color: var(--text-color);
     padding: 12px 60px;
 }
-.home .SecText{
+
+
+.subtext{
+  color: Var.$primary-color !important;
+}
+
+body.dark .subtext{
+  color: Var.$Darksubtext-color !important;
+}
+
+.otherdivs{
+    margin-top: 2rem;
+    font-size: 22px !important;
+}
+
+.sp{
+    color: red !important;
+    font-size: 24;
+    font-weight: bold;
+}
+
+.highlight{
+    font-weight: bold !important;
+    color: rgb(213, 113, 13) !important;
+}
+
+body.dark .highlight{
+    color: cyan !important;
+}
+
+.SecText{
     font-size: 21px;
     font-weight: 600;
     color: var(--text-color);
