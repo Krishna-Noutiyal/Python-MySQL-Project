@@ -106,39 +106,39 @@ def Index():
 
 @app.route("/About")
 def About():
-    return render_template("About.html", Content="This is About Page")
+    return render_template("About.html", Content="About Us")
 
 
-""" Memories PAGE """
+""" Websites PAGE """
 
 
-@app.route("/Memories")
-def Memories():
-    return render_template("Memories.html", Content="This is Memories Page")
+@app.route("/Websites")
+def Websites():
+    return render_template("Websites.html", Content="Softwares used in the Development of this Project !!")
 
 
 """ Projects PAGE """
 
 
-@app.route("/Projects")
-def Projects():
-    return render_template("Projects.html", Content="This is Projects Page")
+@app.route("/Softwares")
+def Softwares():
+    return render_template("Softwares.html", Content="Softwares used in the Development of this Project !!")
 
 
 """ Gallery PAGE """
 
 
-@app.route("/Gallery")
-def Gallery():
-    return render_template("Gallery.html", Content="This is Gallery Page")
+@app.route("/Modules")
+def Modules():
+    return render_template("Modules.html", Content="Modules used in the Development of this Project !!")
 
 
 """ Contact PAGE """
 
 
-@app.route("/Contact")
-def Contact():
-    return render_template("Contact.html", Content="This is Contact Page")
+@app.route("/Extras")
+def Extras():
+    return render_template("Extras.html", Content="Some EXTRA Stuffs")
 
 
 """ Login OR Not"""
@@ -407,3 +407,6 @@ if __name__ == "__main__":
     # Cursor on the DATABASE
     cr = Db.cursor()
     app.run(debug=True)
+
+
+
