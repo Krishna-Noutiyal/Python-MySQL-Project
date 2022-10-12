@@ -1,5 +1,4 @@
 import json
-from tkinter.ttk import Style
 from flask import Flask, render_template, redirect, url_for, request
 import mysql.connector as sql
 from cryptography.fernet import Fernet
