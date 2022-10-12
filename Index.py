@@ -128,7 +128,7 @@ def Softwares():
 """ Gallery PAGE """
 
 
-@app.route("/Modules")
+@app.route("/Modules")  
 def Modules():
     return render_template("Modules.html", Content="Modules used in the Development of this Project !!")
 
@@ -175,6 +175,8 @@ def Login():
             cr.execute("SELECT USERNAME,PASSWD,EMAIL FROM FLASK;")
             UserInfo = {i[0]: [Decrypt(i[2]), Decrypt(i[1])]
                         for i in cr.fetchall()}
+            
+            print("This function ran !!!")
             for i, j in UserInfo.items():
                 print(f"UserName : {i}")
                 print(f"Email : {j[0]}")
@@ -294,13 +296,14 @@ def Signup():
                 SingupDisplay1 = "You Can Login Now"
                 return redirect(url_for("Login"))
 
-        except:
+        except Exception as e:
+            print(e)
             Msg1 = "UserName or Email already Taken"
             Msg2 = "!! Use another UserName or Email !!"
             Style = Style.replace("display: none;", "")
             redirect(url_for("Signup"))
 
-    return render_template("SignUp.html", Style=Style, Msg1=Msg1, Msg2=Msg2)
+    return render_template("Signup.html", Style=Style, Msg1=Msg1, Msg2=Msg2)
 
 
 """ Forgot Page"""
@@ -402,11 +405,11 @@ if __name__ == "__main__":
 
     # Connecting to the DATABASE
     Db = sql.connect(host="localhost", user="root",
-                     passwd="19780000", database="flask", autocommit=True, auth_plugin='mysql_native_password')
+                     passwd="19780000", database="Flask", autocommit=True, auth_plugin='mysql_native_password')
 
     # Cursor on the DATABASE
     cr = Db.cursor()
-    app.run(debug=True)
+    app.run(host="0.0.0.1",port=80)
 
 
 
