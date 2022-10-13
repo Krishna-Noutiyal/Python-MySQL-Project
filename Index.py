@@ -380,12 +380,11 @@ def ChangeCredentials():
                 Style = Style.replace("red", "orange")
 
                 # Updates the Username Email and Password
-                cr.execute("UPDATE FLASK SET USERNAME = %s, EMAIL = %s, PASSWD = %s WHERE USERNAME = %s and EMAIL = %s;",
-                           (UserName, Encrypt(Email), Passwd, UserName, i[1]))
+                cr.execute("UPDATE flask SET USERNAME = '%s', EMAIL = '%s', PASSWD = '%s' WHERE USERNAME = '%s' and EMAIL = '%s';",(UserName, Encrypt(Email), Passwd, UserName, i[1]))
                 return render_template("ChangeCredentials.html", Style=Style, Msg0=f"New Credentials !!", Msg1=f"Username : {UserName}", Msg2=f"Email : {Email}", Msg3=f"Password : {Decrypt(Passwd)}")
 
             # elif Decrypt(i[1]) == Email:
-            #     cr.execute("UPDATE FLASK SET USERNAME= %s, PASSWD= %s WHERE EMAIL= %s;",(UserName,Passwd,i[1]))
+            #     cr.execute("UPDATE flask SET USERNAME= %s, PASSWD= %s WHERE EMAIL= %s;",(UserName,Passwd,i[1]))
                 # return render_template("ChangeCredentials.html",Warning="orange",Msg0=f"New Credentials !!", Msg1=f"Username : {UserName}", Msg2=f"Email : {Email}", Msg3=f"Password : {Decrypt(Passwd)}")
 
         # Style for the Msg
@@ -412,6 +411,6 @@ if __name__ == "__main__":
 
     # Cursor on the DATABASE
     cr = Db.cursor()
-    app.run(host="0.0.0.0",port=80)
-    # app.run(debug=True)
+    # app.run(host="0.0.0.0",port=80)
+    app.run(debug=True)
 
