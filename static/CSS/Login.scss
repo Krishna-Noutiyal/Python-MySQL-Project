@@ -14,7 +14,7 @@ body.dark {
 }
 .formbars {
   width: 100%;
-  height: 100%;
+  height: fit-content;
   // background-color: Var.$primary-color;
   & form {
     width: 30%;
@@ -67,6 +67,7 @@ body.dark .formbars button {
 .subtext{
   color: Var.$primary-color !important;
 }
+
 body.dark .subtext{
   color: Var.$Darksubtext-color !important;
 }

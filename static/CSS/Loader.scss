@@ -1,4 +1,4 @@
-//
+
 @use "Var";
 .Loader-Wrapper {
   width: 100%;
@@ -31,6 +31,7 @@ body.dark .Loader-Wrapper{
   width: 80px;
   height: 80px;
 }
+
 .lds-ring div {
   box-sizing: border-box;
   display: block;

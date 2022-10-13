@@ -75,30 +75,30 @@
             </li>
 
             <li class="nav-link">
-              <a href="{{url_for('Memories')}}">
+              <a href="{{url_for('Websites')}}">
                 <i class="bx bx-heart icon"></i>
-                <span class="text nav-text">Memories</span>
+                <span class="text nav-text">Websites</span>
               </a>
             </li>
 
             <li class="nav-link">
-              <a href="{{url_for('Projects')}}">
+              <a href="{{url_for('Softwares')}}">
                 <i class="bx bx-pie-chart-alt icon"></i>
-                <span class="text nav-text">Projects</span>
+                <span class="text nav-text">Softwares</span>
               </a>
             </li>
 
             <li class="nav-link">
-              <a href="{{url_for('Gallery')}}">
+              <a href="{{url_for('Modules')}}">
                 <i class="bx bx-heart icon"></i>
-                <span class="text nav-text">Gallery</span>
+                <span class="text nav-text">Modules</span>
               </a>
             </li>
 
             <li class="nav-link">
-              <a href="{{url_for('Contact')}}">
+              <a href="{{url_for('Extras')}}">
                 <i class="bx bx-bell icon"></i>
-                <span class="text nav-text">Contact</span>
+                <span class="text nav-text">Extras</span>
               </a>
             </li>
           </ul>
@@ -126,8 +126,10 @@
         </div>
       </div>
     </nav>
-    <div class="text Loader-Wrapper" style="display: none;">
+
+    <div class="text Loader-Wrapper">
       <div class="lds-ring">
+
         <div></div>
         <div></div>
         <div></div>
@@ -136,6 +138,7 @@
       <div class="Loading-Text"><span id="LoadText"></span></div>
     </div>
     {% block Content %} {% endblock %}
+    
   </body>
   <!----======== JS ======== -->
   <!-- Nav.js, Jquery AND Typed.js-->
@@ -150,8 +153,9 @@
       strings: ["Hold ON !!", "Wait !!", "Loading..."],
       typeSpeed: 100,
       backSpeed: 100,
-      loop: false,
+      loop: true,
     });
+    
     // Fading Out of the Loader
     $(window).on("load",function(){
       $(".Loader-Wrapper").fadeOut("slow");

@@ -1,23 +1,64 @@
 {% extends "Base.html" %}
 
-
 <!-- Head -->
 {% block head %}
 
-<title>About</title>
+<title>About Us</title>
 {% endblock %}
-
 
 <!-- Body Content -->
 
 {% block Content %}
 <section class="home">
   <div class="text">{{Content}}</div>
+
+  <div class="text subtext otherdivs">
+    We are the students of a great school :
+    <span class="sp" style="font-size: 26px;">" Kendriya Vidhyalay Vehical Factory Jabalpur "</span>
+    <br />
+    <br />
+    <pre>
+      Studying in 12th,
+      This is our CS Project given to use by,
+      Our great <span class="highlight">CS teacher :</span> <span class="sp">Mr. YOGEH GUPTA</span>
+      
+      The project Theme was,
+      Interaction of Python and MySQL
+
+      Our Project Name is : <span class="sp">Demonstrator</span>
+
+      <span class="highlight">The <span class="sp">Demonstrator</span>
+              <span> In total Took around 7 days to develop and has multiple, great ways to protect the 
+                      <span class="sp">Sensitive Information of a User</span>
+                              From getting Breached
+              </span>
+      </span>
+      This project encrypts the user's Sensitive Information before it gets transferd to the database
+      with not just any Encryption.
+
+      <span class="sp">Features of Encryption:</span>
+              <span class="highlight">
+                        1) SHA256 Hashing algoritham
+
+                        2) One-Way Encryption
+
+                        3) Decryption key 
+
+                        4) Key is 128 bit
+
+                        5) Randomly generated Key 
+              </span>
+              
+              <span class="sp">Info About the "KEY" :</span>
+                          The key is generated Randomly and the Hashed value can only be Dehashed with that same <span class="sp">KEY</span>
+                          If the <span class="sp">KEY</span> is by any chance gets lost There is no way possible to get the Original value back.
+
+                          This is because the hash of a string changed each time it is <span class="sp">HASHED</span>, even with a same <span class="sp">KEY</span>
+                          Thus, leaving no chance to get a <span class="sp">HASH</span> from a <span class="sp">RANDOM</span> string which is same as the Original <span class="sp">HASH.</span>
+    </pre>
+  </div>
 </section>
 {% endblock %}
 
-
 <!-- Scripts -->
-{% block Script %}
-
-{% endblock %}
+{% block Script %} {% endblock %}

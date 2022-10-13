@@ -319,7 +319,35 @@ body.dark .switch::before {
   padding: 12px 60px;
 }
 
-.home .SecText {
+.subtext {
+  color: #695CFE !important;
+}
+
+body.dark .subtext {
+  color: orange !important;
+}
+
+.otherdivs {
+  margin-top: 2rem;
+  font-size: 22px !important;
+}
+
+.sp {
+  color: red !important;
+  font-size: 24;
+  font-weight: bold;
+}
+
+.highlight {
+  font-weight: bold !important;
+  color: rgb(213, 113, 13) !important;
+}
+
+body.dark .highlight {
+  color: cyan !important;
+}
+
+.SecText {
   font-size: 21px;
   font-weight: 600;
   color: var(--text-color);
