@@ -172,15 +172,15 @@ def Login():
         try:
 
             # Gets the data from server and stores in UserInfo dict (Username:Passwd)
-            cr.execute("SELECT USERNAME,PASSWD,EMAIL FROM FLASK;")
+            cr.execute("select username,passwd,email from flask;")
             UserInfo = {i[0]: [Decrypt(i[2]), Decrypt(i[1])]
                         for i in cr.fetchall()}
             
-            print("This function ran !!!")
-            for i, j in UserInfo.items():
-                print(f"UserName : {i}")
-                print(f"Email : {j[0]}")
-                print(f"Passwd : {j[1]}")
+            # print("This function ran !!!")
+            # for i, j in UserInfo.items():
+            #     print(f"UserName : {i}")
+            #     print(f"Email : {j[0]}")
+            #     print(f"Passwd : {j[1]}")
             # UserName taken from the FORM
             UserName = request.form["Usr"]
             # Passwd taken from the FORM
@@ -265,13 +265,14 @@ def Signup():
         # If exist throws an error
         # If not exist adds the new user to database
         try:
-
+            if Email == "":
+                raise Exception("Wrong Email !!!")
             # Executing mysql quiery
             cr.execute("select email from flask;")
 
             # List of all emails on the server
             l = [Decrypt(j) for i in cr.fetchall() for j in i]
-            print(l)
+            # print(l)
 
             # IF email is in Database Throws and error
             if (Email in l) is True:
@@ -290,16 +291,18 @@ def Signup():
 
                 # List of all emails on the server
                 l = [Decrypt(j) for i in cr.fetchall() for j in i]
-                print(l)
+                # print(l)
 
                 SingupDisplay = "!!! Successfully Signed Up !!!"
                 SingupDisplay1 = "You Can Login Now"
                 return redirect(url_for("Login"))
 
         except Exception as e:
-            print(e)
-            Msg1 = "UserName or Email already Taken"
+            # print(e)
+            Msg1 = "UserName or Email already Taken" if Email != "" else "Email Can't be empty"
             Msg2 = "!! Use another UserName or Email !!"
+
+                # Msg2 = "Write Email"
             Style = Style.replace("display: none;", "")
             redirect(url_for("Signup"))
 
@@ -409,7 +412,8 @@ if __name__ == "__main__":
 
     # Cursor on the DATABASE
     cr = Db.cursor()
-    app.run(host="0.0.0.1",port=80)
+    # app.run(host="0.0.0.0",port=80)
+    app.run(debug=True)
 
 
 
