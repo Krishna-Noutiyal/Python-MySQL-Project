@@ -31,7 +31,7 @@
 
     {% block head %} {% endblock %}
   </head>
-  <body style="overflow: hidden;">
+  <body style="overflow: hidden">
     <!-- Navigation -->
     <nav class="sidebar close">
       <header>
@@ -129,7 +129,6 @@
 
     <div class="text Loader-Wrapper">
       <div class="lds-ring">
-
         <div></div>
         <div></div>
         <div></div>
@@ -138,7 +137,6 @@
       <div class="Loading-Text"><span id="LoadText"></span></div>
     </div>
     {% block Content %} {% endblock %}
-    
   </body>
   <!----======== JS ======== -->
   <!-- Nav.js, Jquery AND Typed.js-->
@@ -147,7 +145,6 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
   <script>
-
     // Typing Animation on Loader
     let typed = new Typed("#LoadText", {
       strings: ["Hold ON !!", "Wait !!", "Loading..."],
@@ -155,13 +152,13 @@
       backSpeed: 100,
       loop: true,
     });
-    
+
     // Fading Out of the Loader
-    $(window).on("load",function(){
+    $(window).on("load", function () {
       $(".Loader-Wrapper").fadeOut("slow");
-      $(body).removeAttr("style")
-    })
-    
+      $(body).removeAttr("style");
+    });
+
     // Function that returns a bool true:(User has loged in) false:(Not loged in)
     LoginOrNot = () => {
       let a;
@@ -216,23 +213,26 @@
       },
     });
 
-
     // Sending the current State of Side bar to server
     SideBar = () => {
-      console.log(Sb[1]);
-      $.ajax({
-        url: "{{url_for('Sidebar')}}",
-        type: "POST",
-        contentType: "application/json",
-        contentType: "application/json",
-        data: Sb[1] != undefined ? JSON.stringify("close") : JSON.stringify(""),
-        success: function (res) {
-          console.log(res);
-        },
-        error: function (err) {
-          console.log(err);
-        },
-      });
+      // If screen width is greater than 768px
+      if (window.innerWidth >= 768) {
+        $.ajax({
+          url: "{{url_for('Sidebar')}}",
+          type: "POST",
+          contentType: "application/json",
+          contentType: "application/json",
+          data:
+            Sb[1] != undefined ? JSON.stringify("close") : JSON.stringify(""),
+          success: function (res) {
+            // console.log("Success Sidebar post : ", res);
+            
+          },
+          error: function (err) {
+            console.log("Error on Sidebar post",err);
+          },
+        });
+      }
     };
 
     // Sending GET request to Server URL: UpdateMode

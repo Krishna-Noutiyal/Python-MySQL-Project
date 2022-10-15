@@ -80,7 +80,9 @@ def Sidebar():
 
         # Setting the BodyMode
         SideBar = RequestContent
-        return f"SideBar folding changed to {'close' if Sidebar == 'close' else 'open'} Successfully"
+    
+        return "close" if SideBar == "close" else "open"
+        
 
     # To set the Sidebar of the website, JS automatically
     # Sends a GET request for Current folding state of Sidebar
@@ -229,15 +231,22 @@ def Login():
 
         # If User has logged in
         else:
-            log = False
-
             # Clearing the Variables after the logout
             # Because if user fails to login once before successfully loggin in
             # the Variables values doesn't get cleared
             # Showing the error msg again even after logout
             Display = ""
             Display1 = ""
-            return redirect(url_for("Index"))
+            return redirect(url_for("Logout"))
+
+
+""" Logout PAGE """
+
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    global log
+    log = False
+    return redirect(url_for("Index"))
 
 
 """ Signup Page"""
@@ -380,7 +389,7 @@ def ChangeCredentials():
                 Style = Style.replace("red", "orange")
 
                 # Updates the Username Email and Password
-                cr.execute("UPDATE flask SET USERNAME = '%s', EMAIL = '%s', PASSWD = '%s' WHERE USERNAME = '%s' and EMAIL = '%s';",(UserName, Encrypt(Email), Passwd, UserName, i[1]))
+                cr.execute("UPDATE flask SET USERNAME = %s, EMAIL = %s, PASSWD = %s WHERE USERNAME = %s and EMAIL = %s;",(UserName, Encrypt(Email), Passwd, UserName, i[1]))
                 return render_template("ChangeCredentials.html", Style=Style, Msg0=f"New Credentials !!", Msg1=f"Username : {UserName}", Msg2=f"Email : {Email}", Msg3=f"Password : {Decrypt(Passwd)}")
 
             # elif Decrypt(i[1]) == Email:

@@ -6,6 +6,15 @@ modeSwitch = body.querySelector(".toggle-switch");
 modeText = body.querySelector(".mode-text");
 
 toggle.addEventListener("click", () => {
+  // If sidebar is closed then stops scrolling
+  if (sidebar.classList.contains("close") == true) {
+    // If Innder Width of window is greater than 768px
+    if (window.innerWidth <= 768) {
+      body.style.overflowY = "hidden";
+    }
+  } else {
+    body.style.overflow = "auto";
+  }
   sidebar.classList.toggle("close");
 });
 
@@ -22,6 +31,3 @@ modeSwitch.addEventListener("click", () => {
     modeText.innerText = "Dark mode";
   }
 });
-
-
-
