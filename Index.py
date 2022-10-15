@@ -237,7 +237,7 @@ def Login():
             # Showing the error msg again even after logout
             Display = ""
             Display1 = ""
-            return redirect(url_for("Logout"))
+            return redirect(url_for("logout"))
 
 
 """ Logout PAGE """
@@ -276,6 +276,7 @@ def Signup():
         try:
             if Email == "":
                 raise Exception("Wrong Email !!!")
+
             # Executing mysql quiery
             cr.execute("select email from flask;")
 
@@ -284,7 +285,7 @@ def Signup():
             # print(l)
 
             # IF email is in Database Throws and error
-            if (Email in l) is True:
+            if Email in l:
                 raise Exception("Email already used !!")
 
             # Else Adds new user to Database
@@ -293,13 +294,11 @@ def Signup():
                 Email = Encrypt(Email)
 
                 cr.execute(
-                    "INSERT INTO flask(UserName,Passwd,Email) values(%s,%s,%s)", (UserName, Passwd, Email))
+                    "INSERT INTO flask(UserName,Passwd,Email) values(%s,%s,%s);", (UserName, Passwd, Email))
 
                 # Commiting the changes
                 Db.commit()
 
-                # List of all emails on the server
-                l = [Decrypt(j) for i in cr.fetchall() for j in i]
                 # print(l)
 
                 SingupDisplay = "!!! Successfully Signed Up !!!"
@@ -307,11 +306,10 @@ def Signup():
                 return redirect(url_for("Login"))
 
         except Exception as e:
-            # print(e)
+            print(e)
             Msg1 = "UserName or Email already Taken" if Email != "" else "Email Can't be empty"
             Msg2 = "!! Use another UserName or Email !!"
 
-                # Msg2 = "Write Email"
             Style = Style.replace("display: none;", "")
             redirect(url_for("Signup"))
 
@@ -420,6 +418,6 @@ if __name__ == "__main__":
 
     # Cursor on the DATABASE
     cr = Db.cursor()
-    # app.run(host="0.0.0.0",port=80)
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=80)
+    # app.run(debug=True)
 
