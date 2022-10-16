@@ -1,4 +1,5 @@
 const body = document.querySelector("body");
+const html = document.querySelector("html");
 sidebar = body.querySelector("nav");
 toggle = body.querySelector(".toggle");
 searchBtn = body.querySelector(".search-box");
@@ -10,10 +11,12 @@ toggle.addEventListener("click", () => {
   if (sidebar.classList.contains("close") == true) {
     // If Innder Width of window is greater than 768px
     if (window.innerWidth <= 768) {
-      body.style.overflowY = "hidden";
+      body.style.overflow = "hidden";
+      html.style.overflow = "hidden";
     }
   } else {
     body.style.overflow = "auto";
+    html.style.overflow = "auto";
   }
   sidebar.classList.toggle("close");
 });

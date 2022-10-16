@@ -372,29 +372,25 @@ body.dark .SecText {
 
 @media only screen and (max-width: 768px) {
   .sidebar {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
+    bottom: 0;
   }
   .sidebar .toggle {
-    position: fixed !important;
-    top: 40px !important;
+    top: 50% !important;
     right: unset !important;
     left: 80vw;
-    transform: translateY(-50%) rotate(-90deg) !important;
+    transform: translateY(-50%) rotate(90deg) !important;
   }
   .sidebar.close {
     height: 88px;
-    top: 0;
+    bottom: 0;
     width: 100%;
   }
-  .sidebar.close header {
-    position: fixed;
-  }
   .sidebar.close .toggle {
-    position: fixed;
-    top: 40px;
+    bottom: 40px;
     right: 10%;
-    transform: translateY(-50%) rotate(90deg) !important;
+    transform: translateY(-50%) rotate(-90deg) !important;
   }
   .sidebar.close .image-text {
     height: 100%;
@@ -408,6 +404,12 @@ body.dark .SecText {
   .sidebar.close ~ .home {
     width: 100%;
     left: 0;
-    margin-top: 10rem;
+    margin-top: 5rem;
+  }
+  .home {
+    position: relative;
+    top: unset;
+    left: unset;
+    width: 100%;
   }
 }/*# sourceMappingURL=Nav.css.map */

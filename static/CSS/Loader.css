@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  padding-top: 25vh;
 }
 .Loader-Wrapper .Loading-Text {
   margin-top: 5rem;
@@ -27,7 +28,6 @@ body.dark .Loader-Wrapper {
 }
 
 .lds-ring {
-  margin-top: 20rem;
   display: inline-block;
   position: relative;
   width: 80px;
@@ -78,5 +78,11 @@ body.dark .Loader-Wrapper {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Loading-Text {
+    font-size: 40px !important;
+    padding: 0 !important;
   }
 }/*# sourceMappingURL=Loader.css.map */

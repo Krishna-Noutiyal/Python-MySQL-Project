@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  padding-top: 25vh;
   & .Loading-Text {
     margin-top: 5rem;
     color: Var.$primary-color-light;
@@ -25,7 +26,6 @@ body.dark .Loader-Wrapper{
     background-color: Var.$Darkprimary-color;
 }
 .lds-ring {
-  margin-top: 20rem;
   display: inline-block;
   position: relative;
   width: 80px;
@@ -60,4 +60,17 @@ body.dark .Loader-Wrapper{
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+@media only screen and (max-width: 768px) {
+  
+  // .Loader-Wrapper{
+  //   padding-top: 20%;
+  // }
+  .Loading-Text{
+    font-size: 40px !important;
+    padding: 0 !important;
+  }
+ 
 }
